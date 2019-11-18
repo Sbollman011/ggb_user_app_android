@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.stripe.android.model.Card;
 import com.tv.GreenGrubBox.BaseClasses.BaseFragment;
 import com.tv.GreenGrubBox.Fragment.VendorListFragment.VendorListMvpInteractor;
 import com.tv.GreenGrubBox.Fragment.VendorListFragment.VendorListMvpPresenter;
@@ -60,8 +61,9 @@ public class CorporateFragment extends BaseFragment implements CorporateMvpView 
 
     @OnClick(R.id.done_btn)
     void onclickdone_btn(View view) {
-
-
+        if (!isValidData()) {
+            return;
+        }
         DeviceInfo mDeviceInfo = new DeviceInfo();
         mDeviceInfo.setOs(Constant.ANDROID);
         mDeviceInfo.setResHeight(Constant.getDeviceHeight(getActivity()));
@@ -73,6 +75,22 @@ public class CorporateFragment extends BaseFragment implements CorporateMvpView 
         mDeviceInfo.setDevice_token(CommonUtils.getDeviceTokenFromFCM());
 
         mPresenter.signUpCorporate(name_et.getText().toString().trim(), promocode_et.getText().toString().trim(), mSignUpResponse, mDeviceInfo);
+    }
+
+    private boolean isValidData() {
+
+        if (name_et.getText().toString().trim().isEmpty()) {
+            showMessage(R.string.pleaseEnterNameText);
+            return false;
+        }
+
+        if (promocode_et.getText().toString().trim().isEmpty()) {
+            showMessage(R.string.pleaseenterpromocode);
+            return false;
+        }
+
+
+        return true;
     }
 
     @Nullable

@@ -19,6 +19,7 @@ import com.tv.GreenGrubBox.BaseClasses.BaseActivity;
 import com.tv.GreenGrubBox.R;
 import com.tv.GreenGrubBox.activites.activites.NewMainViewScreen.NewMainViewScreenActivity;
 import com.tv.GreenGrubBox.adapter.PackageAdapter;
+import com.tv.GreenGrubBox.data.modal.CardDetailModal;
 import com.tv.GreenGrubBox.data.modal.DeviceInfo;
 import com.tv.GreenGrubBox.data.modal.LoginResponse;
 import com.tv.GreenGrubBox.data.modal.PackageDatum;
@@ -72,9 +73,9 @@ public class SignUpIndividualActivity extends BaseActivity implements SignUpIndi
     void OnClickDoneBtn(View v) {
         if (isValidData()) {
 
-            showLoading();
-//            Stripe stripe = new Stripe(this, "pk_test_YjaymUsbEdEjfIflmv3S3XhW");
-            Stripe stripe = new Stripe(this, "pk_live_Jd6lGHcwAsJj7Dctv1DQDAQ2");
+           /* showLoading();
+            Stripe stripe = new Stripe(this, "pk_test_YjaymUsbEdEjfIflmv3S3XhW");
+//            Stripe stripe = new Stripe(this, "pk_live_Jd6lGHcwAsJj7Dctv1DQDAQ2");
             stripe.createToken(
                     add_source_card_entry_widget.getCard(),
                     new TokenCallback() {
@@ -103,8 +104,33 @@ public class SignUpIndividualActivity extends BaseActivity implements SignUpIndi
 
                         }
                     }
-            );
-        }}
+            );*/
+
+            Card card = add_source_card_entry_widget.getCard();
+            if(card != null){
+
+            CardDetailModal cardDetailModal = new CardDetailModal();
+            cardDetailModal.setNumber(card.getNumber());
+            cardDetailModal.setExpMonth(String.valueOf(card.getExpMonth()));
+            cardDetailModal.setExpYear(String.valueOf(card.getExpYear()));
+            cardDetailModal.setCvc(card.getCVC());
+
+            PackageDatum bean = packageDataList.get(mCurrentPackagePos);
+
+            DeviceInfo mDeviceInfo = new DeviceInfo();
+            mDeviceInfo.setOs(Constant.ANDROID);
+            mDeviceInfo.setResHeight(Constant.getDeviceHeight(SignUpIndividualActivity.this));
+            mDeviceInfo.setResWidth(Constant.getDeviceWidth(SignUpIndividualActivity.this));
+            mDeviceInfo.setOsVer(Constant.getOSDetails());
+            mDeviceInfo.setDevModel(Constant.getDeviceName());
+            mDeviceInfo.setAppVer(String.valueOf(Constant.appBuildVersionCode(SignUpIndividualActivity.this)));
+            mDeviceInfo.setBattery(Constant.getBatteryPercentage(SignUpIndividualActivity.this));
+            mDeviceInfo.setDevice_token(CommonUtils.getDeviceTokenFromFCM());
+
+            mPresenter.completeRegistration(name_et.getText().toString().trim(), bean.getId(), cardDetailModal, mSignUpResponse,mDeviceInfo);
+            }
+        }
+    }
 
     private boolean isValidData() {
 

@@ -21,6 +21,29 @@ public class LoginResponse {
     @SerializedName("expiryMessage")
     @Expose
     private String expiryMessage;
+    @SerializedName("rsaPublicKey")
+    @Expose
+    private String rsaPublicKey = "";
+
+    public String getExpiryMessage() {
+        return expiryMessage;
+    }
+
+    public void setExpiryMessage(String expiryMessage) {
+        this.expiryMessage = expiryMessage;
+    }
+
+    public String getRsaPublicKey() {
+        if(rsaPublicKey == null){
+            return "";
+        }
+        return rsaPublicKey;
+    }
+
+    public void setRsaPublicKey(String rsaPublicKey) {
+        this.rsaPublicKey = rsaPublicKey;
+    }
+
     @SerializedName("data")
     @Expose
     private SignUpResponseDatum data;

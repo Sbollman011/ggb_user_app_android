@@ -361,12 +361,14 @@ public class MainLocationFragment extends BaseFragment implements GoogleApiClien
                 Logger.logsError(TAG,"No prev frag found");
             }*/
 
+
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             for (Fragment fragment : mFragmentList) {
                 transaction.remove(fragment);
             }
             mFragmentList.clear();
-            transaction.commit();
+//            transaction.commit();
+            transaction.commitAllowingStateLoss();//new changes as app crashes with error - java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
             notifyDataSetChanged();
 
             if (viewPager.getAdapter()!=null){

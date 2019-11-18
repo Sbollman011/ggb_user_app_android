@@ -337,44 +337,8 @@
                                 android:padding="@dimen/dimen_6">
 
                                 <RelativeLayout
-                                    android:id="@+id/request_container_issue_rl"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-
-                                    <ImageView
-                                        android:id="@+id/request_container_issue_iv"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignBottom="@+id/request_container_issue_tv"
-                                        android:layout_alignTop="@+id/request_container_issue_tv"
-                                        android:layout_gravity="center"
-                                        android:layout_marginLeft="@dimen/dimen_8"
-                                        android:src="@drawable/request" />
-
-                                    <TextView
-                                        android:id="@+id/request_container_issue_tv"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginLeft="@dimen/dimen_8"
-                                        android:layout_toRightOf="@+id/request_container_issue_iv"
-                                        android:text="@string/requestContainerIssueText"
-                                        android:textColor="@color/black" />
-
-                                </RelativeLayout>
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2px"
-                                    android:layout_marginLeft="@dimen/dimen_5"
-                                    android:layout_marginRight="@dimen/dimen_5"
-                                    android:layout_marginTop="@dimen/dimen_6"
-                                    android:background="@color/grey_lt_div" />
-
-                                <RelativeLayout
                                     android:id="@+id/requestbox_rl"
                                     android:layout_width="match_parent"
-                                    android:visibility="gone"
                                     android:layout_height="wrap_content">
 
                                     <ImageView
@@ -402,8 +366,6 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="2px"
-                                    android:visibility="gone"
-
                                     android:layout_marginLeft="@dimen/dimen_5"
                                     android:layout_marginRight="@dimen/dimen_5"
                                     android:layout_marginTop="@dimen/dimen_6"
@@ -411,8 +373,6 @@
 
                                 <RelativeLayout
                                     android:id="@+id/report_boxes_rl"
-                                    android:visibility="gone"
-
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_6">
@@ -442,8 +402,6 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="2px"
-                                    android:visibility="gone"
-
                                     android:layout_marginLeft="@dimen/dimen_5"
                                     android:layout_marginRight="@dimen/dimen_5"
                                     android:layout_marginTop="@dimen/dimen_6"
@@ -729,7 +687,76 @@
                                     android:layout_marginRight="@dimen/dimen_5"
                                     android:layout_marginTop="@dimen/dimen_6"
                                     android:background="@color/grey_lt_div" />
+                                <RelativeLayout
+                                    android:id="@+id/move_to_other_rl"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dimen_6">
 
+                                    <ImageView
+                                        android:id="@+id/move_to_other_iv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignBottom="@+id/move_to_other_tv"
+                                        android:layout_alignTop="@+id/move_to_other_tv"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/dimen_8"
+                                        android:src="@drawable/user_account" />
+
+                                    <TextView
+                                        android:id="@+id/move_to_other_tv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginLeft="@dimen/dimen_10"
+                                        android:layout_toRightOf="@+id/move_to_other_iv"
+                                        android:textColor="@color/black" />
+
+                                </RelativeLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2px"
+                                    android:layout_marginLeft="@dimen/dimen_5"
+                                    android:layout_marginRight="@dimen/dimen_5"
+                                    android:layout_marginTop="@dimen/dimen_6"
+                                    android:background="@color/grey_lt_div" />
+
+                                <RelativeLayout
+                                    android:id="@+id/migrate_new_email_rl"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dimen_6">
+
+                                    <ImageView
+                                        android:id="@+id/migrate_new_email_iv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignBottom="@+id/migrate_new_email_tv"
+                                        android:layout_alignTop="@+id/migrate_new_email_tv"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/dimen_8"
+                                        android:src="@drawable/email" />
+
+                                    <TextView
+                                        android:id="@+id/migrate_new_email_tv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginLeft="@dimen/dimen_10"
+                                        android:layout_toRightOf="@+id/migrate_new_email_iv"
+                                        android:text="@string/migratetonewemailid"
+                                        android:textColor="@color/black" />
+
+                                </RelativeLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2px"
+                                    android:layout_marginLeft="@dimen/dimen_5"
+                                    android:layout_marginRight="@dimen/dimen_5"
+                                    android:layout_marginTop="@dimen/dimen_6"
+                                    android:background="@color/grey_lt_div" />
                                 <RelativeLayout
                                     android:id="@+id/terms_and_cond_rl"
                                     android:layout_width="match_parent"

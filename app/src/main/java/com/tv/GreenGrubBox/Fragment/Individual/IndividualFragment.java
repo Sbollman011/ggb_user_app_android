@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.stripe.android.Stripe;
 import com.stripe.android.TokenCallback;
 import com.stripe.android.model.Card;
@@ -26,6 +28,7 @@ import com.tv.GreenGrubBox.Fragment.Corporate.CorporateMvpView;
 import com.tv.GreenGrubBox.R;
 import com.tv.GreenGrubBox.activites.activites.NewMainViewScreen.NewMainViewScreenActivity;
 import com.tv.GreenGrubBox.adapter.PackageAdapter;
+import com.tv.GreenGrubBox.data.modal.CardDetailModal;
 import com.tv.GreenGrubBox.data.modal.DeviceInfo;
 import com.tv.GreenGrubBox.data.modal.LoginResponse;
 import com.tv.GreenGrubBox.data.modal.PackageDatum;
@@ -35,6 +38,7 @@ import com.tv.GreenGrubBox.data.modal.SignUpResponseDatum;
 import com.tv.GreenGrubBox.signup.signupindividual.SignUpIndividualActivity;
 import com.tv.GreenGrubBox.utils.CommonUtils;
 import com.tv.GreenGrubBox.utils.Constant;
+import com.tv.GreenGrubBox.utils.Logger;
 
 import java.util.List;
 
@@ -47,6 +51,7 @@ import butterknife.OnClick;
 public class IndividualFragment extends BaseFragment implements IndividualMvpView {
 
 
+    private static final String TAG = IndividualFragment.class.getSimpleName();
     @Inject
     public IndividualMvpPresenter<IndividualMvpView, IndividualMvpInteractor> mPresenter;
     @BindView(R.id.name_et)
@@ -79,15 +84,15 @@ public class IndividualFragment extends BaseFragment implements IndividualMvpVie
     void OnClickDoneBtn(View v) {
         if (isValidData()) {
 
-            showLoading();
+//            showLoading();
             /*Stripe stripe;
             if (BuildConfig.DEBUG) {
 
             } else {
                 stripe = new Stripe(getActivity(), "pk_live_Jd6lGHcwAsJj7Dctv1DQDAQ2");
             }*/
-//            Stripe stripe = new Stripe(getActivity(), "pk_test_YjaymUsbEdEjfIflmv3S3XhW"); // test
-            Stripe stripe = new Stripe(getActivity(), "pk_live_Jd6lGHcwAsJj7Dctv1DQDAQ2"); // live
+            /*Stripe stripe = new Stripe(getActivity(), "pk_test_YjaymUsbEdEjfIflmv3S3XhW"); // test
+//            Stripe stripe = new Stripe(getActivity(), "pk_live_Jd6lGHcwAsJj7Dctv1DQDAQ2"); // live
 
             stripe.createToken(
                     add_source_card_entry_widget.getCard(),
@@ -117,122 +122,153 @@ public class IndividualFragment extends BaseFragment implements IndividualMvpVie
 
                         }
                     }
-            );
-        }
-    }
+            );*/
 
-    private boolean isValidData() {
+            Card card = add_source_card_entry_widget.getCard();
+            if (card != null) {
 
-        if (name_et.getText().toString().trim().isEmpty()) {
-            showMessage(R.string.pleaseEnterNameText);
-            return false;
-        }
+                CardDetailModal cardDetailModal = new CardDetailModal();
+                cardDetailModal.setNumber(card.getNumber());
+                cardDetailModal.setExpMonth(String.valueOf(card.getExpMonth()));
+                cardDetailModal.setExpYear(String.valueOf(card.getExpYear()));
+                cardDetailModal.setCvc(card.getCVC());
 
-        if (mCurrentPackagePos == 0 || packageDataList == null || packageDataList.size() == 0) {
-            showMessage(R.string.pleaseSelectPackageText);
-            return false;
-        }
+                Gson gson = new GsonBuilder().create();
+                String json = gson.toJson(cardDetailModal);
+                Logger.logsError(TAG, "cardDetailModal in individual fragment ---------------- " + json);
 
-        Card cardToSave = add_source_card_entry_widget.getCard();
-        if (cardToSave == null) {
-            showMessage(R.string.invalid_cardText);
-            return false;
-        }
-        if (mSignUpResponse == null) {
-            showMessage(R.string.some_error);
-            return false;
-        }
+                PackageDatum bean = packageDataList.get(mCurrentPackagePos);
 
+                DeviceInfo mDeviceInfo = new DeviceInfo();
+                mDeviceInfo.setOs(Constant.ANDROID);
+                mDeviceInfo.setResHeight(Constant.getDeviceHeight(getActivity()));
+                mDeviceInfo.setResWidth(Constant.getDeviceWidth(getActivity()));
+                mDeviceInfo.setOsVer(Constant.getOSDetails());
+                mDeviceInfo.setDevModel(Constant.getDeviceName());
+                mDeviceInfo.setAppVer(String.valueOf(Constant.appBuildVersionCode(getActivity())));
+                mDeviceInfo.setBattery(Constant.getBatteryPercentage(getActivity()));
+                mDeviceInfo.setDevice_token(CommonUtils.getDeviceTokenFromFCM());
 
-        return true;
-    }
+                mPresenter.completeRegistration(name_et.getText().toString().trim(), bean.getId(), cardDetailModal, mSignUpResponse, mDeviceInfo);
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.signup_individual, container, false);
-        ButterKnife.bind(this, view);
-        getActivityComponent().inject(this);
-        mPresenter.onAttach(this);
-        setFonts();
-        initData();
-        return view;
-    }
-
-    private void setFonts() {
-        individual_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
-        name_tv.setTypeface(CommonUtils.setRegularFont(getActivity()));
-        name_et.setTypeface(CommonUtils.setRegularFont(getActivity()));
-        choose_your_package_tv.setTypeface(CommonUtils.setRegularFont(getActivity()));
-        done_btn.setTypeface(CommonUtils.setRegularFont(getActivity()));
-
-    }
-
-    private void initData() {
-
-
-        if (getArguments() != null && getArguments().containsKey(Constant.SIGN_UP_RESPONSE)) {
-            mSignUpResponse = (SignUpResponseDatum) getArguments().getSerializable(Constant.SIGN_UP_RESPONSE);
-        }
-
-        mPresenter.getAllPackages();
-    }
-
-    @Override
-    protected void setUp(View view) {
-
-    }
-
-    @Override
-    public void populatePackageData(PackageModalMain mPackageModalMain) {
-
-        if (mPackageModalMain == null) {
-            showMessage(R.string.some_error);
-            return;
-        }
-
-        if (mPackageModalMain.getData() == null) {
-            showMessage(R.string.some_error);
-            return;
-        }
-
-        if (mPackageModalMain.getData().size() == 0) {
-            showMessage(R.string.some_error);
-            return;
-        }
-
-        this.packageDataList = mPackageModalMain.getData();
-
-        PackageDatum packageDatum = new PackageDatum();
-        packageDatum.setName("Select Item");
-
-        this.packageDataList.add(0, packageDatum);
-
-        mPackageAdapter = new PackageAdapter(getActivity(), this.packageDataList);
-        package_spinner.setAdapter(mPackageAdapter);
-        package_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                mCurrentPackagePos = i;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        }
     }
 
-    @Override
-    public void MainScreen(LoginResponse mLoginResponse) {
+        private boolean isValidData () {
 
-        Intent mIntent = new Intent(getActivity(), NewMainViewScreenActivity.class);
-        mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(mIntent);
-        startActivitySideWiseAnimation();
-        finishCurrentActivity();
+            if (name_et.getText().toString().trim().isEmpty()) {
+                showMessage(R.string.pleaseEnterNameText);
+                return false;
+            }
+
+            if (mCurrentPackagePos == 0 || packageDataList == null || packageDataList.size() == 0) {
+                showMessage(R.string.pleaseSelectPackageText);
+                return false;
+            }
+
+            Card cardToSave = add_source_card_entry_widget.getCard();
+            if (cardToSave == null) {
+                showMessage(R.string.invalid_cardText);
+                return false;
+            }
+            if (mSignUpResponse == null) {
+                showMessage(R.string.some_error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        @Nullable
+        @Override
+        public View onCreateView (@NonNull LayoutInflater inflater, @Nullable ViewGroup
+        container, @Nullable Bundle savedInstanceState){
+            View view = inflater.inflate(R.layout.signup_individual, container, false);
+            ButterKnife.bind(this, view);
+            getActivityComponent().inject(this);
+            mPresenter.onAttach(this);
+            setFonts();
+            initData();
+            return view;
+        }
+
+        private void setFonts () {
+            individual_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
+            name_tv.setTypeface(CommonUtils.setRegularFont(getActivity()));
+            name_et.setTypeface(CommonUtils.setRegularFont(getActivity()));
+            choose_your_package_tv.setTypeface(CommonUtils.setRegularFont(getActivity()));
+            done_btn.setTypeface(CommonUtils.setRegularFont(getActivity()));
+
+        }
+
+        private void initData () {
+
+
+            if (getArguments() != null && getArguments().containsKey(Constant.SIGN_UP_RESPONSE)) {
+                mSignUpResponse = (SignUpResponseDatum) getArguments().getSerializable(Constant.SIGN_UP_RESPONSE);
+            }
+
+            mPresenter.getAllPackages();
+        }
+
+        @Override
+        protected void setUp (View view){
+
+        }
+
+        @Override
+        public void populatePackageData (PackageModalMain mPackageModalMain){
+
+            if (mPackageModalMain == null) {
+                showMessage(R.string.some_error);
+                return;
+            }
+
+            if (mPackageModalMain.getData() == null) {
+                showMessage(R.string.some_error);
+                return;
+            }
+
+            if (mPackageModalMain.getData().size() == 0) {
+                showMessage(R.string.some_error);
+                return;
+            }
+
+            this.packageDataList = mPackageModalMain.getData();
+
+            PackageDatum packageDatum = new PackageDatum();
+            packageDatum.setName("Select Item");
+
+            this.packageDataList.add(0, packageDatum);
+
+            mPackageAdapter = new PackageAdapter(getActivity(), this.packageDataList);
+            package_spinner.setAdapter(mPackageAdapter);
+            package_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    mCurrentPackagePos = i;
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }
+
+        @Override
+        public void MainScreen (LoginResponse mLoginResponse){
+
+            Intent mIntent = new Intent(getActivity(), NewMainViewScreenActivity.class);
+            mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(mIntent);
+            startActivitySideWiseAnimation();
+            finishCurrentActivity();
+        }
     }
-}

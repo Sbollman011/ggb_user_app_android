@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.tv.GreenGrubBox.BaseClasses.BasePresenter;
 import com.tv.GreenGrubBox.R;
+import com.tv.GreenGrubBox.data.modal.CardDetailModal;
 import com.tv.GreenGrubBox.data.modal.DeviceInfo;
 import com.tv.GreenGrubBox.data.modal.LoginRequest;
 import com.tv.GreenGrubBox.data.modal.LoginResponse;
@@ -15,6 +16,7 @@ import com.tv.GreenGrubBox.data.network.ApiHelper;
 import com.tv.GreenGrubBox.data.network.retrofit.ApiClient;
 import com.tv.GreenGrubBox.home.MyPreference;
 import com.tv.GreenGrubBox.utils.CommonUtils;
+import com.tv.GreenGrubBox.utils.Constant;
 import com.tv.GreenGrubBox.utils.Logger;
 import com.tv.GreenGrubBox.utils.rx.SchedulerProvider;
 
@@ -81,7 +83,7 @@ public class SignUpIndividualPresenter<V extends SignUpIndividualMvpView, I exte
     }
 
     @Override
-    public void completeRegistration(String name, String id, String tokenId, final SignUpResponse mSignUpResponseMain, DeviceInfo mDeviceInfo) {
+    public void completeRegistration(String name, String id, CardDetailModal cardDetailModal, final SignUpResponse mSignUpResponseMain, DeviceInfo mDeviceInfo) {
 
 
         if (!getMvpView().isNetworkConnected()) {
@@ -92,10 +94,16 @@ public class SignUpIndividualPresenter<V extends SignUpIndividualMvpView, I exte
         getMvpView().hideKeyboard();
         ApiHelper mApiHelper = ApiClient.getClient().create(ApiHelper.class);
 
+        Gson gson = new Gson();
+        String json = gson.toJson(cardDetailModal);
+        Logger.logsInfo(TAG, "cardDetailModal =========" + json);
+        Constant.encryptRSAToString(json, MyPreference.getCurrentUser().getRsaPublicKey());
+
         SignUpDataUserRequest mSignUpDataUserRequest = new SignUpDataUserRequest();
         mSignUpDataUserRequest.setName(name);
         mSignUpDataUserRequest.setPackageId(id);
-        mSignUpDataUserRequest.setCardToken(tokenId);
+//        mSignUpDataUserRequest.setCardToken(tokenId);
+        mSignUpDataUserRequest.setCardDetail(MyPreference.getEncryptedKey());
         mSignUpDataUserRequest.setUserId(mSignUpResponseMain.getData().getId());
 
         mSignUpDataUserRequest.setDeviceInfo(mDeviceInfo);

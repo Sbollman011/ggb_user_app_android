@@ -16,10 +16,9 @@
 package com.tv.GreenGrubBox.data.network;
 
 public final class ApiEndPoint {
-
-   // public static final String BASE_URL = "http://192.168.1.2:5000/";// Development Local
+    public static final String BASE_URL = "http://192.168.168.23:5000/";// Development Local
    // public static final String BASE_URL = "http://35.160.200.41:5000/";// Development Server
-    public static final String BASE_URL = "https://api.greengrubbox.com/";// Live Server
+    //public static final String BASE_URL = "http://api.greengrubbox.com/";// Live Server 14 Aug 2019
 //    public static final String BASE_URL = "http://34.219.124.227:5000/";// Staging Server
     public static final String BASE_URL_GOOGLE = "https://maps.googleapis.com/maps/api/";
 
@@ -33,10 +32,13 @@ public final class ApiEndPoint {
     public static final String GET_USER_DETAILS = "user";
     public static final String VALIDATE_APP_VERSION = "validateAppVersion";
     public static final String GET_USER_HISTORY = "user/history";
+    public static final String MIGRATEMEMBERSHIP = "user/migrate/membership";
     public static final String GET_VENDORS = "user/vendors";
     public static final String FORGOT_PASSWORD = "user/forgot-password";
     public static final String VERIFY_OTP = "user/verifyOTP";
     public static final String RESEND_OTP = "user/resendOTP";
+    public static final String EMAIL_VERIFICATION = "user/migrate/verifyEmail";
+    public static final String OTP_VERIFICATION = "user/migrate/verifyOTP";
 
     private ApiEndPoint() {
         // This class is not publicly instantiable

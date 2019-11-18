@@ -148,5 +148,40 @@ public class MyPreference {
         editor.commit();
     }
 
+    /**
+     * Save public key.
+     *
+     * @param publickKey to public key.
+     */
+    public static void saveEncryptedKey(String publickKey) {
+
+        SharedPreferences.Editor editor = getSettings().edit();
+        editor.putString(Constant.ENCRYPTED_KEY, publickKey);
+        editor.commit();
+    }
+
+
+    /**
+     * Get User Token.
+     *
+     * @return user token.
+     */
+    public static String getEncryptedKey() {
+        SharedPreferences prefs = getSettings();
+        return prefs.getString(Constant.ENCRYPTED_KEY, "");
+    }
+
+    public static void setRSAKeyFromSever(String publickKey) {
+
+        SharedPreferences.Editor editor = getSettings().edit();
+        editor.putString(Constant.RSA_KEY, publickKey);
+        editor.commit();
+    }
+
+
+    public static String getRSAKeyFromServer() {
+        SharedPreferences prefs = getSettings();
+        return prefs.getString(Constant.RSA_KEY, "");
+    }
 
 }

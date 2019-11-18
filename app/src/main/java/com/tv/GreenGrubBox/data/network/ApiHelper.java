@@ -16,6 +16,7 @@
 package com.tv.GreenGrubBox.data.network;
 
 import com.google.gson.JsonElement;
+import com.tv.GreenGrubBox.data.modal.AccountTypeModalRequest;
 import com.tv.GreenGrubBox.data.modal.CheckBoxRequest;
 import com.tv.GreenGrubBox.data.modal.ForgotPasswordRequestModal;
 import com.tv.GreenGrubBox.data.modal.LoginRequest;
@@ -33,6 +34,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 @Singleton
@@ -82,6 +84,15 @@ public interface ApiHelper {
     Call<JsonElement> verifyOtp(@Body VerifyOTPRequest verifyOTPRequest);
 
 
+    @POST(ApiEndPoint.EMAIL_VERIFICATION)
+    Call<JsonElement> emailVarificatiopn(@Header("Authorization") String mAuthorization,
+                                         @Body ForgotPasswordRequestModal mSignUpRequest);
+
+    @POST(ApiEndPoint.OTP_VERIFICATION)
+    Call<JsonElement> OtpVarificatiopn(@Header("Authorization") String mAuthorization,
+                                         @Body ForgotPasswordRequestModal mSignUpRequest);
+
+
     @POST(ApiEndPoint.RESEND_OTP)
     Call<JsonElement> resendOtp(@Body VerifyOTPRequest verifyOTPRequest);
 
@@ -97,6 +108,12 @@ public interface ApiHelper {
                                      @Header("authorization") String mAuthorization,
                                      @Query("currentPage") int mCurrentPage,
                                      @Query("pageSize") int mPageSize);
+
+
+    @Headers("Content-Type: application/json")
+    @POST(ApiEndPoint.MIGRATEMEMBERSHIP)
+    Call<JsonElement> getChangeAccount(@Header("authorization") String mAuthorization,
+                                       @Body AccountTypeModalRequest modalRequest);
 
 
     @Headers("Content-Type: application/json")

@@ -8,11 +8,28 @@ import android.content.pm.PackageInfo;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.tv.GreenGrubBox.home.MyPreference;
+
 import java.lang.reflect.Field;
+import java.security.GeneralSecurityException;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.KeySpec;
+import java.security.spec.X509EncodedKeySpec;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  * Created by Shoeb on 21/7/17.
@@ -140,9 +157,8 @@ public class Constant {
     public static final String SAME_CREATOR = "SAME_CREATOR";
     public static final String SAME_PROFILE = "SAME_PROFILE";
     public static final String FRIEND_DATUM = "FRIEND_DATUM";
-    public static final String EMAIL_SEND_US_MESSAGE = "support@greengrubbox.com";
+    public static final String EMAIL_SEND_US_MESSAGE = "support@ggb.com";
     public static final String SUBJECT_SEND_US_MESSAGE = "Green GrubBox";
-    public static final String SUBJECT_MAIL = "Request Container Return issue.";
     public static final String SUBJECT_REPORT_AN_ISSUE = "GOiN Report an issue";
     public static final String PUBLIC_PROFILE_DATA = "PUBLIC_PROFILE_DATA";
     public static final String QUERY = "QUERY";
@@ -187,6 +203,9 @@ public class Constant {
     public static final String TO_ACCOUNT_SCREEN = "TO_ACCOUNT_SCREEN";
     public static final String EMAIL = "EMAIL";
     public static final String IS_CORP_SELECTED = "IS_CORP_SELECTED";
+    public static final String ACCOUNTTYPE = "ACCOUNTTYPE";
+    public static final String ENCRYPTED_KEY = "ENCRYPTED_KEY";
+    public static final String RSA_KEY = "RSA_KEY";
 
 
     //    ** Returns the consumer friendly device name */
@@ -334,5 +353,36 @@ public class Constant {
         float batteryPct = level / (float) scale;
 
         return (int) (batteryPct * 100);
+    }
+
+    public static String encryptRSAToString(String text, String strPublicKey) {
+
+        byte[] cipherText = null;
+        String strEncryInfoData = "";
+        try {
+
+            strPublicKey = strPublicKey.replace("-----BEGIN PUBLIC KEY-----","");
+            strPublicKey = strPublicKey.replace("-----END PUBLIC KEY-----","");
+            strPublicKey = strPublicKey.replaceAll("(\\r|\\n)", "");
+
+            System.out.println("strPublicKey ================ " + strPublicKey);
+
+            KeyFactory keyFac = KeyFactory.getInstance("RSA");
+            KeySpec keySpec = new X509EncodedKeySpec(Base64.decode(strPublicKey.trim().getBytes(), Base64.DEFAULT));
+            Key publicKey = keyFac.generatePublic(keySpec);
+
+            // get an RSA cipher object and print the provider
+            final Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+            // encrypt the plain text using the public key
+            cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+            cipherText = cipher.doFinal(text.getBytes());
+            strEncryInfoData = new String(Base64.encode(cipherText, Base64.DEFAULT));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("encoded ================ " + strEncryInfoData.replaceAll("(\\r|\\n)", ""));
+        MyPreference.saveEncryptedKey(strEncryInfoData.replaceAll("(\\r|\\n)", ""));
+        return strEncryInfoData.replaceAll("(\\r|\\n)", "");
     }
 }

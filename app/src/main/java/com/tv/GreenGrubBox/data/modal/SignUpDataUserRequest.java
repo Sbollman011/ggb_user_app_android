@@ -90,4 +90,16 @@ public class SignUpDataUserRequest {
     public void setPromoCode(String promoCode) {
         this.promoCode = promoCode;
     }
+
+    @SerializedName("cardDetail")
+    @Expose
+    private String cardDetail = "";
+
+    public String getCardDetail() {
+        return cardDetail;
+    }
+
+    public void setCardDetail(String cardDetail) {
+        this.cardDetail = cardDetail;
+    }
 }

@@ -1,9 +1,11 @@
 package com.tv.GreenGrubBox.Fragment.Individual;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.tv.GreenGrubBox.BaseClasses.BasePresenter;
 import com.tv.GreenGrubBox.R;
+import com.tv.GreenGrubBox.data.modal.CardDetailModal;
 import com.tv.GreenGrubBox.data.modal.DeviceInfo;
 import com.tv.GreenGrubBox.data.modal.LoginResponse;
 import com.tv.GreenGrubBox.data.modal.PackageModalMain;
@@ -12,8 +14,11 @@ import com.tv.GreenGrubBox.data.modal.SignUpResponseDatum;
 import com.tv.GreenGrubBox.data.network.ApiHelper;
 import com.tv.GreenGrubBox.data.network.retrofit.ApiClient;
 import com.tv.GreenGrubBox.home.MyPreference;
+import com.tv.GreenGrubBox.utils.Constant;
 import com.tv.GreenGrubBox.utils.Logger;
 import com.tv.GreenGrubBox.utils.rx.SchedulerProvider;
+
+import java.security.GeneralSecurityException;
 
 import javax.inject.Inject;
 
@@ -34,7 +39,6 @@ public class IndividualPresenter<V extends IndividualMvpView, I extends Individu
 
     @Override
     public void getAllPackages() {
-
 
 
         if (!getMvpView().isNetworkConnected()) {
@@ -73,7 +77,7 @@ public class IndividualPresenter<V extends IndividualMvpView, I extends Individu
     }
 
     @Override
-    public void completeRegistration(String name, String id, String tokenId, SignUpResponseDatum mSignUpResponseMain, DeviceInfo mDeviceInfo) {
+    public void completeRegistration(String name, String id, CardDetailModal cardDetailModal, SignUpResponseDatum mSignUpResponseMain, DeviceInfo mDeviceInfo) {
 
 
         if (!getMvpView().isNetworkConnected()) {
@@ -84,11 +88,16 @@ public class IndividualPresenter<V extends IndividualMvpView, I extends Individu
         getMvpView().hideKeyboard();
         ApiHelper mApiHelper = ApiClient.getClient().create(ApiHelper.class);
 
+        Gson gson = new GsonBuilder().create();
+        String json = gson.toJson(cardDetailModal);
+        Constant.encryptRSAToString(json, MyPreference.getRSAKeyFromServer());
+
         SignUpDataUserRequest mSignUpDataUserRequest = new SignUpDataUserRequest();
         mSignUpDataUserRequest.setName(name);
         mSignUpDataUserRequest.setPackageId(id);
         mSignUpDataUserRequest.setAccountType("1");
-        mSignUpDataUserRequest.setCardToken(tokenId);
+//        mSignUpDataUserRequest.setCardToken(tokenId);
+        mSignUpDataUserRequest.setCardDetail(MyPreference.getEncryptedKey());
         mSignUpDataUserRequest.setUserId(mSignUpResponseMain.getId());
 
         mSignUpDataUserRequest.setDeviceInfo(mDeviceInfo);

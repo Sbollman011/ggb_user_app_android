@@ -94,6 +94,11 @@ public class LoginPresenter<V extends com.tv.GreenGrubBox.login.LoginMvpView, I 
                         getMvpView().showMessage(R.string.some_error);
                         return;
                     }
+
+                    if(mLoginResponse.getRsaPublicKey() != null){
+                        MyPreference.setRSAKeyFromSever(mLoginResponse.getRsaPublicKey());
+                    }
+
                     if (mLoginResponse.getStatus() == 1) {
 
                         if (mLoginResponse.getData().getIsRenewRequire() == 1) {

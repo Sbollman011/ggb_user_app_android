@@ -16,6 +16,7 @@
 package com.tv.GreenGrubBox.data.network;
 
 import com.google.gson.JsonElement;
+import com.tv.GreenGrubBox.data.modal.AccountTypeModalRequest;
 import com.tv.GreenGrubBox.data.modal.CheckBoxRequest;
 import com.tv.GreenGrubBox.data.modal.ForgotPasswordRequestModal;
 import com.tv.GreenGrubBox.data.modal.LoginRequest;
@@ -91,6 +92,16 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
+    public Call<JsonElement> emailVarificatiopn(String mAuthorization, ForgotPasswordRequestModal mSignUpRequest) {
+        return null;
+    }
+
+    @Override
+    public Call<JsonElement> OtpVarificatiopn(String mAuthorization, ForgotPasswordRequestModal mSignUpRequest) {
+        return null;
+    }
+
+    @Override
     public Call<JsonElement> resendOtp(VerifyOTPRequest verifyOTPRequest) {
         return null;
     }
@@ -102,6 +113,11 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Call<JsonElement> getUserHistory(String userId, String mAuthorization, int mCurrentPage, int mPageSize) {
+        return null;
+    }
+
+    @Override
+    public Call<JsonElement> getChangeAccount(String mAuthorization, AccountTypeModalRequest modalRequest) {
         return null;
     }
 

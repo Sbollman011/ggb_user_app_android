@@ -19,6 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tv.GreenGrubBox.BaseClasses.BaseFragment;
+import com.tv.GreenGrubBox.Callbacks.CallBackTextChange;
+import com.tv.GreenGrubBox.Dialogs.ChangeEmailDialog.ChangeEmailIdDialog;
+import com.tv.GreenGrubBox.Dialogs.ChangeToAccountTypeDialog.ChangeToAccountTypeDialog;
+import com.tv.GreenGrubBox.Dialogs.ForgotPasswordDialog.ForgotPasswordDialog;
 import com.tv.GreenGrubBox.R;
 import com.tv.GreenGrubBox.SplashActivity;
 import com.tv.GreenGrubBox.activites.activites.BoxHistory.BoxHistoryActivity;
@@ -193,11 +197,20 @@ public class AccountFragment extends BaseFragment implements AccountMvpView, Swi
     @BindView(R.id.subscr_expires_rl)
     RelativeLayout subscr_expires_rl;
 
+    @BindView(R.id.migrate_new_email_rl)
+    RelativeLayout migrate_new_email_rl;
+
     @BindView(R.id.report_boxes_rl)
     RelativeLayout report_boxes_rl;
 
     @BindView(R.id.requestbox_tv)
     TextView requestbox_tv;
+
+    @BindView(R.id.migrate_new_email_tv)
+    TextView migrate_new_email_tv;
+
+    @BindView(R.id.move_to_other_tv)
+    TextView move_to_other_tv;
 
     @BindView(R.id.website_tv)
     TextView website_tv;
@@ -211,24 +224,8 @@ public class AccountFragment extends BaseFragment implements AccountMvpView, Swi
     @BindView(R.id.report_boxes_tv)
     TextView report_boxes_tv;
 
-    @BindView(R.id.request_container_issue_tv)
-    TextView request_container_issue_tv;
-
     @BindView(R.id.call_us_rl)
     RelativeLayout call_us_rl;
-
-    @BindView(R.id.request_container_issue_rl)
-    RelativeLayout request_container_issue_rl;
-
-    @OnClick(R.id.request_container_issue_rl)
-    void onclickrequest_container_issue_rl(View view) {
-
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + Constant.EMAIL_SEND_US_MESSAGE));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, Constant.SUBJECT_MAIL);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Please let us know what happened with your GrubContainer." + "\n\n\n\n\n\n\n" + "-- \n" + "Thank you" + "\n" + " Team GGB");
-        startActivity(emailIntent);
-
-    }
 
     @BindView(R.id.email_rl)
     RelativeLayout email_rl;
@@ -252,6 +249,10 @@ public class AccountFragment extends BaseFragment implements AccountMvpView, Swi
         }
     }
 
+    @OnClick(R.id.migrate_new_email_rl)
+    void onclickmigrate_new_email_rl(View view) {
+        ChangeEmailIdDialog.newInstance(null).show(getChildFragmentManager());
+    }
 
     @OnClick(R.id.email_rl)
     void onClickemail_rl(View v) {
@@ -284,6 +285,30 @@ public class AccountFragment extends BaseFragment implements AccountMvpView, Swi
         startActivitySideWiseAnimation();
     }
 
+
+    @OnClick(R.id.move_to_other_rl)
+    void onclickmove_to_other_rl(View view) {
+        openChangeToAccountDialog();
+    }
+
+    private void openChangeToAccountDialog() {
+        if(mUserDetailModal.getData() == null){
+            return;
+        }
+
+        Bundle mBundle = new Bundle();
+        if (mUserDetailModal.getData() != null) {
+            mBundle.putInt(Constant.ACCOUNTTYPE, mUserDetailModal.getData().getAccountType());
+        }
+        ChangeToAccountTypeDialog.newInstance(mBundle, new CallBackTextChange() {
+            @Override
+            public void textChange() {
+                callWS(false);
+            }
+        }).show(getChildFragmentManager());
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -305,6 +330,8 @@ public class AccountFragment extends BaseFragment implements AccountMvpView, Swi
         you_have_two_ggb_tv.setTypeface(CommonUtils.setRegularFont(getActivity()));
         account_tv.setTypeface(CommonUtils.setBoldFont(getActivity()));
         resync_app_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
+        move_to_other_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
+        migrate_new_email_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
         user_tv.setTypeface(CommonUtils.setBoldFont(getActivity()));
         username_tv.setTypeface(CommonUtils.setRegularFont(getActivity()));
         total_boxes_tv.setTypeface(CommonUtils.setBoldFont(getActivity()));
@@ -315,11 +342,9 @@ public class AccountFragment extends BaseFragment implements AccountMvpView, Swi
         toUpdateAccount_tv.setTypeface(CommonUtils.setRegularFont(getActivity()));
         other_tv.setTypeface(CommonUtils.setBoldFont(getActivity()));
         requestbox_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
-        request_container_issue_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
         report_boxes_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
         website_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
         email_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
-        report_boxes_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
         call_us_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
         terms_and_cond_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
         view_box_history_tv.setTypeface(CommonUtils.setSemiBoldFont(getActivity()));
@@ -395,6 +420,12 @@ public class AccountFragment extends BaseFragment implements AccountMvpView, Swi
         if (mUserDetailModal.getStatus() == 1) {
 
             number_of_ggb_tv.setText(String.valueOf(mUserDetailModal.getData().getCurrentBoxes()));
+
+            if (mUserDetailModal.getData().getAccountType() == 1) {
+                move_to_other_tv.setText(getResources().getString(R.string.movetocorparate));
+            } else {
+                move_to_other_tv.setText(getResources().getString(R.string.moveto));
+            }
 
             if (mUserDetailModal.getData().getCurrentBoxes() == 0) {
                 you_have_two_ggb_tv.setText("" + getResources().getString(R.string.grubBoxesScannedOutZeroText));

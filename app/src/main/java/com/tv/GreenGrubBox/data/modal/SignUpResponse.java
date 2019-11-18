@@ -77,4 +77,16 @@ public class SignUpResponse implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public String getRsaPublicKey() {
+        return rsaPublicKey;
+    }
+
+    public void setRsaPublicKey(String rsaPublicKey) {
+        this.rsaPublicKey = rsaPublicKey;
+    }
+
+    @SerializedName("rsaPublicKey")
+    @Expose
+    private String rsaPublicKey = "";
 }

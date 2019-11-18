@@ -183,7 +183,16 @@
     <string name="ifisnotshwoingText">If you don\'t see it right away please check your SPAM filter. Thank you</string>
     <string name="foryouself">(for yourself)</string>
     <string name="ifyouhavecode">(if you have a code)</string>
-    <string name="requestContainerIssueText">Request Container Return issue</string>
+    <string name="migratetonewemailid">Migrate to new email id</string>
+    <string name="moveto">Move to Individual</string>
+    <string name="movetocorparate">Move to Corporate</string>
+    <string name="pleaseenterpromocode">Please enter promo code.</string>
+    <string name="emailvarification">Email Verification</string>
+    <string name="otpverfication">OTP Verification</string>
+    <string name="otptxt">OTP</string>
+    <string name="cardNumberText">Card number</string>
+    <string name="expirationDateText">Expiration date</string>
+    <string name="cvcText">CVC</string>
 
 
 </resources>

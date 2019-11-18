@@ -10,6 +10,7 @@ import com.tv.GreenGrubBox.data.modal.SignUpResponse;
 import com.tv.GreenGrubBox.data.modal.VerifyOTPRequest;
 import com.tv.GreenGrubBox.data.network.ApiHelper;
 import com.tv.GreenGrubBox.data.network.retrofit.ApiClient;
+import com.tv.GreenGrubBox.home.MyPreference;
 import com.tv.GreenGrubBox.utils.Logger;
 import com.tv.GreenGrubBox.utils.rx.SchedulerProvider;
 
@@ -133,7 +134,13 @@ public class ActivateAccountPresenter<V extends ActivateAccountMvpView, I extend
                         return;
                     }
 
+
+                    if(signUpResponse.getRsaPublicKey() != null){
+                        MyPreference.setRSAKeyFromSever(signUpResponse.getRsaPublicKey());
+                    }
+
                     getMvpView().responseVerifyOTP(signUpResponse);
+
 
                     Logger.logsError(TAG, "response  BODY : " + response.body().toString());
 

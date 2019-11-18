@@ -30,10 +30,8 @@
         <!-- Just to prove it's working -->
         <item name="android:background">#FFFFFF</item>
     </style>
-
     <style name="TextAppearance.AppCompat.Notification">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">#ccc</item>
     </style>
-
 </resources>

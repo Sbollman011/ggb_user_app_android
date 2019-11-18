@@ -24,6 +24,16 @@ import com.tv.GreenGrubBox.ActivateAccount.ActivateAccountMvpView;
 import com.tv.GreenGrubBox.ActivateAccount.ActivateAccountPresenter;
 import com.tv.GreenGrubBox.ActivateAccount.ActiviateAccountInteractor;
 import com.tv.GreenGrubBox.ActivateAccount.ActiviateAccountMvpInteractor;
+import com.tv.GreenGrubBox.Dialogs.ChangeEmailDialog.ChangeEmailIdInteractor;
+import com.tv.GreenGrubBox.Dialogs.ChangeEmailDialog.ChangeEmailIdMvpInteractor;
+import com.tv.GreenGrubBox.Dialogs.ChangeEmailDialog.ChangeEmailIdMvpPresenter;
+import com.tv.GreenGrubBox.Dialogs.ChangeEmailDialog.ChangeEmailIdMvpView;
+import com.tv.GreenGrubBox.Dialogs.ChangeEmailDialog.ChangeEmailIdPresenter;
+import com.tv.GreenGrubBox.Dialogs.ChangeToAccountTypeDialog.ChangeToAccountTypeInteractor;
+import com.tv.GreenGrubBox.Dialogs.ChangeToAccountTypeDialog.ChangeToAccountTypeMvpInteractor;
+import com.tv.GreenGrubBox.Dialogs.ChangeToAccountTypeDialog.ChangeToAccountTypeMvpPresenter;
+import com.tv.GreenGrubBox.Dialogs.ChangeToAccountTypeDialog.ChangeToAccountTypeMvpView;
+import com.tv.GreenGrubBox.Dialogs.ChangeToAccountTypeDialog.ChangeToAccountTypePresenter;
 import com.tv.GreenGrubBox.Dialogs.ForgotPasswordDialog.ForgotPasswordInteractor;
 import com.tv.GreenGrubBox.Dialogs.ForgotPasswordDialog.ForgotPasswordMvpInteractor;
 import com.tv.GreenGrubBox.Dialogs.ForgotPasswordDialog.ForgotPasswordMvpPresenter;
@@ -362,5 +372,30 @@ public class ActivityModule {
         return presenter;
     }
 
+
+
+    @Provides
+    @PerActivity
+    ChangeToAccountTypeMvpInteractor provideChangeToAccountTypeMvpInteractor(ChangeToAccountTypeInteractor interactor) {
+        return interactor;
+    }
+
+    @Provides
+    ChangeToAccountTypeMvpPresenter<ChangeToAccountTypeMvpView, ChangeToAccountTypeMvpInteractor> provideChangeToAccountTypePresenter(
+            ChangeToAccountTypePresenter<ChangeToAccountTypeMvpView, ChangeToAccountTypeMvpInteractor> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    ChangeEmailIdMvpInteractor provideChangeEmailIdMvpInteractor(ChangeEmailIdInteractor interactor) {
+        return interactor;
+    }
+
+    @Provides
+    ChangeEmailIdMvpPresenter<ChangeEmailIdMvpView, ChangeEmailIdMvpInteractor> provideChangeEmailIdPresenter(
+            ChangeEmailIdPresenter<ChangeEmailIdMvpView, ChangeEmailIdMvpInteractor> presenter) {
+        return presenter;
+    }
 
 }

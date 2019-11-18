@@ -17,6 +17,8 @@ package com.tv.GreenGrubBox.di.component;
 
 import com.tv.GreenGrubBox.ActivateAccount.ActivateAccountActivity;
 import com.tv.GreenGrubBox.ActivateAccount.ActivateAccountDialog;
+import com.tv.GreenGrubBox.Dialogs.ChangeEmailDialog.ChangeEmailIdDialog;
+import com.tv.GreenGrubBox.Dialogs.ChangeToAccountTypeDialog.ChangeToAccountTypeDialog;
 import com.tv.GreenGrubBox.Dialogs.ForgotPasswordDialog.ForgotPasswordDialog;
 import com.tv.GreenGrubBox.Fragment.Account.AccountFragment;
 import com.tv.GreenGrubBox.Fragment.Corporate.CorporateFragment;
@@ -78,4 +80,8 @@ public interface ActivityComponent {
     void inject(CorporateFragment corporateFragment);
 
     void inject(IndividualFragment individualFragment);
+
+    void inject(ChangeToAccountTypeDialog changeToAccountTypeDialog);
+
+    void inject(ChangeEmailIdDialog changeEmailIdDialog);
 }

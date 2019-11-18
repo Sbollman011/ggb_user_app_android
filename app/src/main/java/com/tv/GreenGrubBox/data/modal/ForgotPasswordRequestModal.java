@@ -24,5 +24,15 @@ public class ForgotPasswordRequestModal implements Serializable{
     private String email;
 
 
+    @SerializedName("otp")
+    @Expose
+    private int otp;
 
+    public int getOtp() {
+        return otp;
+    }
+
+    public void setOtp(int otp) {
+        this.otp = otp;
+    }
 }

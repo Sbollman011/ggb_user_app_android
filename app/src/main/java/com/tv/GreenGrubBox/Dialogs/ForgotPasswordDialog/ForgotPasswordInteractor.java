@@ -10,7 +10,7 @@ import javax.inject.Inject;
  * Created by user on 12/2/18.
  */
 
-public class ForgotPasswordInteractor  extends BaseInteractor implements ForgotPasswordMvpInteractor {
+public class ForgotPasswordInteractor extends BaseInteractor implements ForgotPasswordMvpInteractor {
 
     @Inject
     public ForgotPasswordInteractor(PreferencesHelper preferencesHelper, ApiHelper apiHelper) {
