@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.tv.GreenGrubBox.utils.Views.ImageViewTouchViewPager
+            android:id="@+id/img_vp"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/close_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/dimen_30"
+            android:layout_marginRight="@dimen/dimen_10"
+
+
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@drawable/circle_grey_bg"
+            android:src="@drawable/location_popup_cancel" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,189 @@
+<resources>
+    <string name="app_name">Green GrubBox</string>
+
+    <!--facebook-->
+    <string name="facebook_app_id">1523231714395683</string>
+
+    <!--Twitter-->
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">IFhKWMjHnwUiyg3fUcsTav7F8</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">P93h0N4RziotKXhmrbzWtJ4cllW2cjwfkKda2LstCiWsqj439B</string>
+    <string name="API_KEY">AIzaSyATWABsgDUjC_ZV8QRyixrK6xkXQEVBYUo</string>
+    <string name="loginTxt">Login</string>
+    <string name="loginwithfbtxt">Login with facebook</string>
+    <string name="loginwithtwittertxt">Login with Twitter</string>
+    <string name="loginwithgoogletxt">Login with Google+</string>
+    <string name="some_error">Some error</string>
+    <string name="emailText">Email</string>
+    <string name="internetCheckText">Please check Internet connections!</string>
+    <string name="weJustNeedText">We just need your registered email address\nto send you password reset instructions</string>
+    <string name="emailAddressText">Email </string>
+    <string name="resetPasswordText">RESET PASSWORD</string>
+    <string name="forgotPasswordText">Forgot Password </string>
+    <string name="resetLinkText">Reset Link has been\nsent to your Registered</string>
+    <string name="okText">OK</string>
+    <string name="password">Password</string>
+    <string name="videochatappTxt">Video Chat App</string>
+    <string name="forgotPassText">Forgot Password?</string>
+    <string name="signinTxt">Sign In</string>
+    <string name="idonthaveaccount">Don\'t have an account?</string>
+    <string name="emailidTxt">E-mail ID.</string>
+    <string name="oldpasswordTxt">Old Password</string>
+    <string name="newpasswordTxt">New Password</string>
+    <string name="confirmNewpasswordTxt">Confirm New Password</string>
+    <string name="doneTxt">Done</string>
+    <string name="setNewPasswordTxt">Set New Password</string>
+    <string name="fullnameTxt">Full Name</string>
+    <string name="pleaseCheckInternetConnectionText">Please check Internet.</string>
+    <string name="loginFailText">Login Fail</string>
+    <string name="signupFailText">Sign Up Fail</string>
+
+    LoginActivityogin Validation-->
+    <string name="empty_email">Please provide a non empty email.</string>
+    <string name="empty_name">Please provide a name.</string>
+    <string name="empty_promocode">Please provide a promo code.</string>
+    <string name="invalid_email">Please provide a valid email.</string>
+    <string name="empty_password">Please provide a non empty password.</string>
+    <string name="confirmempty_password">Please provide a non empty password.</string>
+    <string name="emailTxt">Email</string>
+    <string name="createpasswordTxt">Create Password</string>
+    <string name="confirmPasswordTxt">Confirm Password</string>
+    <string name="countryTxt">Country</string>
+    <string name="phoneNumberTxt">Phone No.</string>
+    <string name="zipcodeTxt">Zip Code</string>
+    <string name="genderTxt">Gender</string>
+    <string name="alreadyhaveanAccountTxt">Already have an account?</string>
+    <string name="areyousureyouwanttosignouttxt">Are you sure you want to logout?</string>
+    <string name="yesText">Yes</string>
+    <string name="noText">No</string>
+    <string name="sessionExpireText">Session expire, please re-login again.</string>
+    <string name="signup">SIGN UP</string>
+    <string name="headingscrollertrxt1">Enjoy takeout meals with Green GrubBox </string>
+    <string name="scrollertext1">The most sustainable and environmentally friendly way to enjoy takeout food.</string>
+    <string name="headingscrollertrxt2">Eat green from your favorite places</string>
+    <string name="scrollertext2"> Find food joints that offer GGB in the area.  Ask to have your meal served in a GrubBox then scan the boxes QR code.Show the cashier your confirmation.</string>
+    <string name="headingscrollertrxt3">When done </string>
+    <string name="scrollertext3">Use the app to find one of our convenient GrubGone Stations to deposit your GrubBox into and we\'ll take care of the rest.</string>
+    <string name="headingscrollertrxt4">Sign up today &amp; Start Grubbing Green.</string>
+    <!--<string name="scrollertext4"> Log into your existing account or become a Green GrubBox member today and to "stop the abuse of single use."</string>-->
+    <string name="view_boxhistory">View Box History</string>
+    <string name="account">Account</string>
+    <string name="accountCaps">ACCOUNT</string>
+    <string name="user">User</string>
+    <string name="tadwails">Ted Wallis</string>
+    <string name="totalboxeds">Total Boxes Used</string>
+    <string name="subscriptionexpire">Subscription Expires</string>
+    <string name="Toupdate">To update account or payment information, visit the Green GrubBox website.</string>
+    <string name="requestboxcount">Request Box Count Correction</string>
+    <string name="reportbox">Report Box Broken/Lost</string>
+    <string name="Support">Support</string>
+    <string name="logout">Log Out</string>
+    <string name="resuync">Resync Application</string>
+    <string name="website">Website</string>
+    <string name="other">Other</string>
+    <string name="web">WEB</string>
+    <string name="yelp">YELP</string>
+    <string name="servingcontemporary">Serving Contemporary Asia Cuisine in the Heart of Seattle\'s International District.</string>
+    <string name="close">CLOSE</string>
+    <string name="ReqiuredStoragePermissionText">Storage Permission is required for this app.</string>
+    <string name="GotoSettingText">Go to settings and enable permission.</string>
+    <string name="DialogOK">OK</string>
+    <string name="DialogCancel">Cancel</string>
+    <string name="scan">SCAN</string>
+    <string name="location">LOCATIONS</string>
+    <string name="swipetolearnmoretxt">SWIPE TO LEARN MORE</string>
+    <string name="signUpForAnAccountTextWithU"><u>SIGN UP FOR AN ACCOUNT</u></string>
+    <string name="signUpForAnAccountText">Sign Up For An Account</string>
+    <string name="continueText">Continue</string>
+    <string name="haveAnAccountText"><u>HAVE AN ACCOUNT? LOG IN</u></string>
+    <string name="corporateText">CORPORATE</string>
+    <string name="individualText">INDIVIDUAL</string>
+    <string name="pleaseEnterEmailText">Please enter email</string>
+    <string name="pleaseEnterValidEmailText">Please enter valid email</string>
+    <string name="pleaseEnterPasswordText">Please enter password</string>
+    <string name="pleaseSelectAccountTypeText">Please select account type</string>
+    <string name="logIntoYourAccountText">Log Into Your Account</string>
+    <string name="corporateUserText">Corporate User</string>
+    <string name="promoCodeText">Promo Code</string>
+    <string name="loginText">Log In</string>
+    <string name="individualUserText">Individual User</string>
+    <string name="nameText">Name</string>
+    <string name="chooseYourPackageText">Choose your package</string>
+    <string name="daysText">Days</string>
+    <string name="invalid_cardText">Invalid Card Data</string>
+    <string name="pleaseEnterNameText">Please enter your name</string>
+    <string name="searchforlocationTxt">Search for a location...</string>
+    <string name="greenGrubBoxTxt">Green GrubBox</string>
+    <string name="youhave2ggbTxt"><b>You have 2 GrubBoxes scanned out.</b>\nVisit drop location today!</string>
+    <string name="resyncgrubBoxTxt">Resync GrubBox</string>
+    <string name="paymentTxt">Payment Info</string>
+    <string name="accountinfoTxt">Account Info</string>
+    <string name="viewTutorialTxt">View Tutorial</string>
+    <string name="visitWebsiteTxt">Visit Website</string>
+    <string name="signOutTxt">Sign Out</string>
+    <string name="insertthesixDigitPinCodeText">Insert the 6 digit pin code sent to\nyour e-mail.</string>
+    <string name="insertsixdigitpin">Insert 6 digit pin</string>
+    <string name="resendpinText">Resend PIN</string>
+    <string name="activate_AccountText">Activate Account</string>
+    <string name="pleaseEntersixDigitPinText">Please enter 6 digit pin</string>
+    <string name="pinSentText">Pin Sent</string>
+    <string name="asixDigitpinwasText">A 6 digit PIN was sent to your e-mail address and will expire in 15 minutes.</string>
+    <string name="passworddoenotmatch">Password and confirm password must be same.</string>
+    <string-array name="GenderArray">
+        <item>Gender</item>
+        <item>MALE</item>
+        <item>FEMALE</item>
+        <item>OTHER</item>
+    </string-array>
+
+    <string-array name="CountryArray">
+        <item>Country</item>
+        <item>India</item>
+        <item>USA</item>
+        <item>Australia</item>
+        <item>Italy</item>
+        <item>Others</item>
+    </string-array>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="youHaveText">You have</string>
+    <!--<string name="grubBoxesScannedOutText">GrubBoxes scanned out.\nVisit drop location today!</string>-->
+    <string name="grubBoxesScannedOutText">GrubBoxes scanned out.\nPlease visit a Drop Station today.</string>
+    <string name="grubBoxScannedOutText">GrubBox scanned out.\nPlease visit a Drop Station today.</string>
+    <string name="grubBoxesScannedOutZeroText">You have 0 boxes checked out, \nget to grubbing!</string>
+    <string name="grubBoxesScannedText">GrubBoxes Scanned</string>
+    <string name="scanYourBoxText">Scan your box</string>
+    <string name="scanBoxText">Scan box</string>
+
+ <string name="boxyHistoryTxt">Box History</string>
+    <string name="stillWithYouText">Still with you</string>
+    <string name="stillWithYouTxt">Still with you, please return when the grubbing is done.</string>
+    <string name="returnedtoInventory">Returned to Inventory</string>
+    <string name="userNotFoundText">User not found! Please contact administrator</string>
+    
+    <string name="youhavenotcompletedyoutregistrationTxt">You have not completed your registration</string>
+    <string name="pleaseSelectPackageText">Please select package</string>
+    <string name="vendors">VENDORS</string>
+    <string name="dropstations">DROP STATIONS</string>
+    <string name="both">BOTH</string>
+    <string name="novendorsforyourLocationTxt">No vendors for your location</string>
+    <string name="callusTxt">Call Us</string>
+    <string name="termsandconditionTxt"><![CDATA[Terms & conditions]]></string>
+    <string name="forgotPassTxt"><u>FORGOT PASSWORD?</u></string>
+    <string name="forgotYourPassText">Forgot your password?</string>
+    <string name="canceltxt">Cancel</string>
+    <string name="submittxt">Submit</string>
+    <string name="noboxesText">No boxes</string>
+    <string name="itSeemsLikeYourSubscriptionIsExpiredText">It seems like your subscription is expired. Please renew your subscription.</string>
+    <string name="scrollertext4">Log into your existing account or become a Green GrubBox member today and to \"stop the abuse of single use.\"</string>
+    <string name="retypepassword">Re-enter password</string>
+    <string name="ENROLLASCORPORATE">ENROLL AS CORPORATE</string>
+    <string name="ENROLLASINDIVIDUAL">ENROLL AS INDIVIDUAL</string>
+    <string name="nodatafound">No data found.</string>
+    <string name="app_update_reqText">App update required!!!</string>
+    <string name="ifisnotshwoingText">If you don\'t see it right away please check your SPAM filter. Thank you</string>
+    <string name="foryouself">(for yourself)</string>
+    <string name="ifyouhavecode">(if you have a code)</string>
+    <string name="requestContainerIssueText">Request Container Return issue</string>
+
+
+</resources>

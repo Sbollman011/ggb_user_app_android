@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_rl"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/uppettext_rl"
+            android:layout_width="@dimen/dimen_120"
+            android:layout_height="@dimen/dimen_120"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_30"
+            >
+
+            <ImageView
+                android:id="@+id/changeimg_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/dimen_20" />
+
+            <com.tv.GreenGrubBox.utils.Views.VerticalViewPager
+                android:id="@+id/vp_slider_vertical"
+                android:layout_width="match_parent"
+                android:background="@drawable/circle_white_bg"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                android:layout_gravity="center" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_below="@+id/uppettext_rl"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_above="@+id/ll_dots"
+
+                android:layout_gravity="center" />
+
+
+            <com.augustopicciani.drawablepageindicator.widget.DrawablePagerIndicator
+                android:id="@+id/ll_dots"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_30"
+
+                android:layout_above="@+id/swipe_to_learn_tv"
+                android:layout_centerHorizontal="true"
+                app:centered="true"
+                app:drawableDefault="@drawable/login_off"
+                app:drawableSelected="@drawable/login_on"
+                app:imageSpacing="30"
+
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+
+            <TextView
+                android:id="@+id/swipe_to_learn_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:paddingBottom="@dimen/dimen_20"
+                android:text="@string/swipetolearnmoretxt"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_14"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/register_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dimen_30"
+        android:layout_marginLeft="@dimen/dimen_50"
+        android:layout_marginRight="@dimen/dimen_50"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/login_tv"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_white_corner"
+            android:gravity="center"
+            android:padding="@dimen/dimen_12"
+            android:text="@string/loginTxt"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_16" />
+
+        <TextView
+            android:id="@+id/sign_up_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@drawable/round_white_fill_corner"
+            android:gravity="center"
+            android:padding="@dimen/dimen_12"
+            android:text="@string/signup"
+            android:textAllCaps="true"
+            android:textColor="@color/forestgreen_bg"
+            android:textSize="@dimen/dimen_16" />
+    </LinearLayout>
+
+</RelativeLayout>

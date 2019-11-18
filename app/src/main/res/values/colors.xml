@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#5dc248</color>
+    <color name="colorAccent">#97D842</color>
+    <color name="blue">#14D8BF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="pale_blue">#14FFE0</color>
+    <color name="grey_lt_div">#ABABAB</color> // New DIV
+    <color name="forestgreen_bg">#5dc248</color> // New DIV
+    <color name="gray_btn">#1a1a1a</color>
+    <color name="orange_bg">#b27300</color>
+    <color name="gray_bg">#D3D3D3</color>
+    <color name="light_grey">#bebfc2</color>
+    <color name="light_grey_div">#EBEBEB</color>
+    <color name="light_grey_color">#364E58</color>
+    <color name="dark_grey_color">#777777</color>
+    <color name="transparent">#00000000</color>
+    <color name="tabMedium">#2B2B2B</color>
+    <color name="tabDark">#000000</color>
+    <color name="tabTransparent">#10ffffff</color>
+
+    <color name="theme_color_primary">#1c9359</color>
+    <color name="theme_color_primary_light">#3aaf75</color>
+    <color name="theme_color_accent">#084e43</color>
+    <color name="orange_color">#EB9800</color>
+    <color name="green_color">#89D641</color>
+    <color name="green_tab_color">#50bd47</color>
+
+
+    <color name="tab_border">#33434E</color>
+    <color name="tab_background">#33434E</color>
+
+</resources>

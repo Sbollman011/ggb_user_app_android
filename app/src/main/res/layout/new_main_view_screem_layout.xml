@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_56"
+        android:layout_alignParentBottom="true"
+        android:scaleY="-1"
+        app:tabBackground="@drawable/tab_background_color_selector"
+        app:tabGravity="fill"
+        app:tabMode="fixed" />
+
+    <com.tv.GreenGrubBox.utils.Views.MainViewPager
+        android:id="@+id/main_tab_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/tab_layout"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <ImageView
+        android:id="@+id/scan_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/scan" />
+
+</RelativeLayout>

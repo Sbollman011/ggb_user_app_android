@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:elevation="@dimen/dimen_10"
+                card_view:cardCornerRadius="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_20"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:gravity="center_horizontal"
+                        android:text="@string/individualUserText"
+                        android:id="@+id/individual_tv"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:textColor="#374e57"
+                        android:textSize="@dimen/font_20" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:id="@+id/name_tv"
+                        android:text="@string/nameText"
+                        android:textColor="#bebfc2" />
+
+                    <EditText
+                        android:id="@+id/name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:background="@drawable/box_img"
+                        android:ellipsize="end"
+                        android:inputType="textCapSentences"
+                        android:paddingLeft="@dimen/dimen_5"
+                        android:paddingRight="@dimen/dimen_5"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:text="@string/chooseYourPackageText"
+                        android:id="@+id/choose_your_package_tv"
+                        android:textColor="#bebfc2" />
+
+                    <Spinner
+
+                        android:id="@+id/package_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.stripe.android.view.CardMultilineWidget
+                            android:id="@+id/add_source_card_entry_widget"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            />
+
+                        <FrameLayout
+                            android:id="@+id/add_source_error_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/add_source_card_entry_widget"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_add_source_error"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                />
+                        </FrameLayout>
+                    </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/done_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:background="@drawable/rounded_green_bg"
+                        android:text="@string/ENROLLASINDIVIDUAL"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_18" />
+
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

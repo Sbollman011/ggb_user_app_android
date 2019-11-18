@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/gender_spinner_tv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:drawablePadding="@dimen/dimen_10"
+    android:ellipsize="end"
+    android:paddingLeft="@dimen/dimen_20"
+    android:singleLine="true"
+    android:textColor="@color/black"
+    android:textSize="@dimen/dimen_18">
+
+</TextView>

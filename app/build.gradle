@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId 'com.tv.GreenGrubBox'
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 7
+        versionName "0.0.7"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'com.android.support:design:27.0.2'
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //circle indicator
+    compile 'me.relex:circleindicator:1.2.2@aar'
+
+    //fb
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+    // Include all the Twitter APIs
+    compile 'com.twitter.sdk.android:twitter:3.1.1'
+    //twitter
+    // Include all the Twitter APIs
+    compile 'com.twitter.sdk.android:twitter:3.1.1'
+    //google plus
+    compile 'com.google.android.gms:play-services-auth:11.0.4'
+
+    /*Viper*/
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    // reactive
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+    // retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    // dependency injection
+    compile "com.google.dagger:dagger:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'javax.inject:javax.inject:1'
+    //multidex
+    compile 'com.android.support:multidex:1.0.1'
+    //DrawablePageIndicator
+    compile 'com.augustopicciani.drawable_page_indicator:library:1.0'
+    //AutoScrollView
+    compile('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') {
+        exclude module: 'support-v4'
+
+        //glide
+        implementation 'com.github.bumptech.glide:glide:4.5.0'
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    }
+    //QR scanner
+    compile 'me.dm7.barcodescanner:zxing:1.8.4'
+    compile 'com.google.android.gms:play-services-maps:11.0.4'
+
+    compile 'com.stripe:stripe-android:5.1.0'
+
+    //QR scanner-2
+
+    compile 'com.journeyapps:zxing-android-embedded:3.4.0'
+    compile 'com.android.support:appcompat-v7:27.0.2'   // Version 23+ is required
+
+    //fcm
+    compile 'com.google.firebase:firebase-messaging:11.0.4'
+
+    //GMS
+    compile 'com.google.android.gms:play-services-location:11.0.4'
+
+    //Crash
+    compile 'com.google.firebase:firebase-crash:11.0.4'
+
+    //underscore
+    compile 'com.github.javadev:underscore:1.30'
+
+    //CircleImageView
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+
+    //ImageViewZoom
+    compile 'it.sephiroth.android.library.imagezoom:imagezoom:2.3.0'
+
+
+}
+
+// Add to the bottom of the file
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:elevation="@dimen/dimen_10"
+                card_view:cardCornerRadius="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_20"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/corporate_user_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/corporateUserText"
+                        android:textColor="#374e57"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:textSize="@dimen/font_24" />
+
+                    <TextView
+                        android:id="@+id/name_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:text="@string/nameText"
+                        android:textColor="#bebfc2" />
+
+                    <EditText
+                        android:id="@+id/name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:background="@drawable/box_img"
+                        android:ellipsize="end"
+                        android:padding="@dimen/dimen_5"
+                        android:inputType="textCapSentences"
+                        android:paddingLeft="@dimen/dimen_5"
+                        android:paddingRight="@dimen/dimen_5"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:id="@+id/promocode_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:text="@string/promoCodeText"
+                        android:textColor="#bebfc2" />
+
+                    <EditText
+                        android:id="@+id/promocode_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:background="@drawable/box_img"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:inputType="text"
+                        android:paddingLeft="@dimen/dimen_5"
+                        android:padding="@dimen/dimen_5"
+                        android:paddingRight="@dimen/dimen_5"
+                        android:singleLine="true"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black" />
+
+                    <Button
+                        android:id="@+id/done_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_40"
+                        android:background="@drawable/rounded_green_bg"
+                        android:text="@string/ENROLLASCORPORATE"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_18" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dimen_30"
+        android:layout_marginRight="@dimen/dimen_30"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:background="@drawable/white_rounded_bg_sharp_corner"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_26"
+        android:paddingTop="@dimen/dimen_10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/cross_iv"
+            android:padding="@dimen/dimen_5"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cross" />
+
+        <LinearLayout
+            android:id="@+id/main_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/pinSentText"
+                android:textColor="@color/black"
+                android:id="@+id/pin_sent_tv"
+                android:textSize="@dimen/font_22"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/aSix_digit_pin_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:text="@string/asixDigitpinwasText"
+                android:textColor="@color/dark_grey_color"
+                android:textSize="@dimen/font_14" />
+
+            <TextView
+                android:id="@+id/if_is_not_showing_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:text="@string/ifisnotshwoingText"
+                android:textColor="@color/dark_grey_color"
+                android:textSize="@dimen/font_14" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
